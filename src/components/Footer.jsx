@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 import { socialLinks } from "../constants";
 
+/**
+ * Renders the footer component with copyright information and social links.
+ */
 const Footer = () => {
   return (
     <footer className='footer font-poppins'>

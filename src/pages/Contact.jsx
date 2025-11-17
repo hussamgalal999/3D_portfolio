@@ -6,6 +6,9 @@ import { Fox } from "../models";
 import useAlert from "../hooks/useAlert";
 import { Alert, Loader } from "../components";
 
+/**
+ * Renders a contact form with animation and email sending functionality.
+ */
 const Contact = () => {
   const formRef = useRef();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -13,13 +16,23 @@ const Contact = () => {
   const [loading, setLoading] = useState(false);
   const [currentAnimation, setCurrentAnimation] = useState("idle");
 
+  /**
+   * Updates the form state with the new value for the specified field.
+   */
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
 
+  /**
+   * Sets the current animation to "walk".
+   */
   const handleFocus = () => setCurrentAnimation("walk");
+  /** Sets the current animation to "idle" when the blur event occurs. */
   const handleBlur = () => setCurrentAnimation("idle");
 
+  /**
+   * Handles form submission, sends an email, and manages loading and alert states.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoading(true);

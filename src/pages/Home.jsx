@@ -6,6 +6,14 @@ import { HomeInfo, Loader } from "../components";
 import { soundoff, soundon } from "../assets/icons";
 import { Bird, Island, Plane, Sky } from "../models";
 
+/**
+ * Renders the Home component with interactive elements and audio playback.
+ *
+ * This component initializes an audio reference for background music, manages the current stage,
+ * and controls the rotation state. It adjusts the scale and position of the biplane and island
+ * based on the screen size. The audio plays or pauses based on the isPlayingMusic state, and
+ * the component renders a 3D scene with various lights and objects, including a jukebox for music control.
+ */
 const Home = () => {
   const audioRef = useRef(new Audio(sakura));
   audioRef.current.volume = 0.4;
@@ -25,6 +33,9 @@ const Home = () => {
     };
   }, [isPlayingMusic]);
 
+  /**
+   * Adjusts the biplane's scale and position based on the screen size.
+   */
   const adjustBiplaneForScreenSize = () => {
     let screenScale, screenPosition;
 
@@ -40,6 +51,9 @@ const Home = () => {
     return [screenScale, screenPosition];
   };
 
+  /**
+   * Adjusts the island's scale and position based on the screen size.
+   */
   const adjustIslandForScreenSize = () => {
     let screenScale, screenPosition;
 
