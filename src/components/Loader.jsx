@@ -1,5 +1,6 @@
 import { Html } from "@react-three/drei";
 
+/** Renders a loading spinner component. */
 const Loader = () => {
   return (
     <Html>

@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
 
+/**
+ * Renders a Call to Action (CTA) section with a message and a contact link.
+ */
 const CTA = () => {
   return (
     <section className='cta'>
