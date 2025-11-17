@@ -2,6 +2,9 @@ import { NavLink } from "react-router-dom";
 
 import { logo } from "../assets/images";
 
+/**
+ * Renders the navigation bar with links to home, about, and projects.
+ */
 const Navbar = () => {
   return (
     <header className='header'>

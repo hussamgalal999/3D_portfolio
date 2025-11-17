@@ -5,6 +5,11 @@ import { useFrame } from "@react-three/fiber";
 import skyScene from "../assets/3d/sky.glb";
 
 // 3D Model from: https://sketchfab.com/3d-models/phoenix-bird-844ba0cf144a413ea92c779f18912042
+/**
+ * Renders a rotating sky mesh using a 3D model.
+ * @param {Object} props - The component props.
+ * @param {boolean} props.isRotating - Determines if the sky should rotate.
+ */
 export function Sky({ isRotating }) {
   const sky = useGLTF(skyScene);
   const skyRef = useRef();
