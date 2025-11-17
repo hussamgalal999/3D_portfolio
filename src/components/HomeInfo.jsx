@@ -2,6 +2,17 @@ import { Link } from "react-router-dom";
 
 import { arrow } from "../assets/icons";
 
+/**
+ * Renders different information based on the current stage.
+ *
+ * The function checks the value of currentStage and returns a corresponding JSX element.
+ * Each stage presents unique content, including personal information, skills, project leadership,
+ * and a call to action for potential collaborations. If the currentStage does not match any
+ * predefined values, it returns null.
+ *
+ * @param {Object} props - The component props.
+ * @param {number} props.currentStage - The current stage determining the displayed content.
+ */
 const HomeInfo = ({ currentStage }) => {
   if (currentStage === 1)
     return (
