@@ -16,6 +16,18 @@ import { useFrame, useThree } from "@react-three/fiber";
 
 import islandScene from "../assets/3d/island.glb";
 
+/**
+ * Represents an interactive 3D island component that can be rotated.
+ *
+ * This component handles user interactions for rotating the island using mouse or touch events. It manages the rotation state, updates the island's rotation based on user input, and determines the current stage based on the island's orientation. The component also applies damping to the rotation when not actively being rotated, ensuring a smooth visual experience.
+ *
+ * @param {Object} params - The parameters for the Island component.
+ * @param {boolean} params.isRotating - Indicates whether the island is currently rotating.
+ * @param {Function} params.setIsRotating - Function to update the rotation state.
+ * @param {Function} params.setCurrentStage - Function to set the current stage based on the island's orientation.
+ * @param {Object} params.currentFocusPoint - The current focus point for the island.
+ * @param {...any} props - Additional props to be passed to the component.
+ */
 export function Island({
   isRotating,
   setIsRotating,
@@ -36,6 +48,9 @@ export function Island({
   const dampingFactor = 0.95;
 
   // Handle pointer (mouse or touch) down event
+  /**
+   * Handles the pointer down event by stopping propagation, preventing default behavior, and setting rotation state.
+   */
   const handlePointerDown = (event) => {
     event.stopPropagation();
     event.preventDefault();
@@ -49,6 +64,9 @@ export function Island({
   };
 
   // Handle pointer (mouse or touch) up event
+  /**
+   * Stops event propagation and prevents default behavior on pointer up.
+   */
   const handlePointerUp = (event) => {
     event.stopPropagation();
     event.preventDefault();
@@ -56,6 +74,9 @@ export function Island({
   };
 
   // Handle pointer (mouse or touch) move event
+  /**
+   * Handles pointer movement to update the island's rotation based on user input.
+   */
   const handlePointerMove = (event) => {
     event.stopPropagation();
     event.preventDefault();
@@ -79,6 +100,14 @@ export function Island({
   };
 
   // Handle keydown events
+  /**
+   * Handles key down events for rotating an island.
+   *
+   * This function checks if the pressed key is either "ArrowLeft" or "ArrowRight".
+   * If "ArrowLeft" is pressed, it initiates rotation to the left by updating the island's
+   * rotation and setting the rotation speed. Similarly, if "ArrowRight" is pressed,
+   * it rotates the island to the right. The rotation only starts if it is not already rotating.
+   */
   const handleKeyDown = (event) => {
     if (event.key === "ArrowLeft") {
       if (!isRotating) setIsRotating(true);
@@ -94,6 +123,9 @@ export function Island({
   };
 
   // Handle keyup events
+  /**
+   * Handles the key up event to stop rotation on left or right arrow key press.
+   */
   const handleKeyUp = (event) => {
     if (event.key === "ArrowLeft" || event.key === "ArrowRight") {
       setIsRotating(false);
@@ -101,6 +133,9 @@ export function Island({
   };
 
   // Touch events for mobile devices
+  /**
+   * Handles the touch start event by stopping propagation, preventing default behavior, and setting rotation state.
+   */
   const handleTouchStart = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -110,12 +145,18 @@ export function Island({
     lastX.current = clientX;
   }
   
+  /**
+   * Handles the end of a touch event by stopping propagation and preventing default behavior.
+   */
   const handleTouchEnd = (e) => {
     e.stopPropagation();
     e.preventDefault();
     setIsRotating(false);
   }
   
+  /**
+   * Handles touch move events to update island rotation.
+   */
   const handleTouchMove = (e) => {
     e.stopPropagation();
     e.preventDefault();
