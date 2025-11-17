@@ -8,6 +8,9 @@ import { experiences, skills } from "../constants";
 
 import "react-vertical-timeline-component/style.min.css";
 
+/**
+ * Renders the About section containing personal information, skills, and work experience.
+ */
 const About = () => {
   return (
     <section className='max-container'>
